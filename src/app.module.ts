@@ -3,9 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProntuarioModule } from './modules/prontuario/prontuario.module';
-import { UsuarioModule } from './modules/auth/auth.module';
+import { AuthModule } from './modules/auth/auth.module';
 import { jwtConstants } from './modules/auth/constants';
 import { JwtModule } from '@nestjs/jwt';
+import { UserModule } from './modules/user/user.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -19,7 +20,8 @@ import { JwtModule } from '@nestjs/jwt';
       synchronize: true,
     }),
     ProntuarioModule,
-    UsuarioModule,
+    AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -3,21 +3,22 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Usuario } from 'src/model/entities/Usuario';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { UsuarioRepository } from './auth.repository';
+import { UserService } from '../user/user.service';
 import { JwtService, JwtModule } from '@nestjs/jwt/dist';
+import { UserModule } from '../user/user.module';
 import { jwtConstants } from './constants';
 
 @Module({
   imports: [
+    UserModule,
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '3600s' },
     }),
-    TypeOrmModule.forFeature([Usuario]),
   ],
   controllers: [AuthController],
-  providers: [AuthService, UsuarioRepository, JwtService],
+  providers: [AuthService],
   exports: [AuthService],
 })
-export class UsuarioModule {}
+export class AuthModule {}

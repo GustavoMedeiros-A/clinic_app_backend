@@ -4,7 +4,7 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UsuarioRepository } from './auth.repository';
+import { UserService } from '../user/user.service';
 import { CreateUserDTO } from './dtos/createUser.dto';
 import { LoginDTO } from './dtos/loginUser.dto';
 import { JwtService } from '@nestjs/jwt';
@@ -13,24 +13,16 @@ import { jwtConstants } from './constants';
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly usuarioRepository: UsuarioRepository,
+    private readonly userService: UserService,
     private jwtService: JwtService,
   ) {}
 
-  async createUser(user: CreateUserDTO) {
-    const userExists = await this.usuarioRepository.findByEmail(user.email);
-    if (userExists) {
-      throw new HttpException('User already exists', HttpStatus.FORBIDDEN);
-    }
-    return await this.usuarioRepository.createUser(user);
-  }
-
   async signIn({ email, password }: LoginDTO) {
-    const user = await this.usuarioRepository.findByEmail(email);
+    const user = await this.userService.findByEmail(email);
     if (user?.password !== password) {
       throw new UnauthorizedException();
     }
-    const payload = { sub: user.id, username: user.name };
+    const payload = { username: user.name, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
     };
