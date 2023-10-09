@@ -9,6 +9,10 @@ export class UserRepository {
     private readonly usuarioModel: Repository<Usuario>,
   ) {}
 
+  async findAll() {
+    return await this.usuarioModel.find();
+  }
+
   async findByEmail(email: string): Promise<Usuario | undefined> {
     return await this.usuarioModel.findOneBy({ email });
   }
