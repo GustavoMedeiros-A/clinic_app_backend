@@ -8,6 +8,8 @@ import { UserModule } from './modules/user/user.module';
 import { AuthGuard } from './modules/auth/auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { ClinicaModule } from './modules/clinica/clinica.module';
+import { EspecialistaModule } from './modules/especialista/especialista.module';
+import { EspecialistaClinicaModule } from './modules/especialistaClinica/especialista_clinica.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -23,7 +25,9 @@ import { ClinicaModule } from './modules/clinica/clinica.module';
     ProntuarioModule,
     AuthModule,
     UserModule,
-    ClinicaModule
+    ClinicaModule,
+    EspecialistaModule,
+    EspecialistaClinicaModule
   ],
   controllers: [AppController],
   providers: [
