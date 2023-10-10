@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { ProntuarioRepository } from './prontuario.repository';
 import { ProntuarioDTO } from './dtos/Prontuario.dto';
 
@@ -12,5 +12,13 @@ export class ProntuarioService {
 
   async createProntuario(prontuarioDto: ProntuarioDTO): Promise<ProntuarioDTO> {
     return await this.prontuarioRepository.createProntuario(prontuarioDto);
+  }
+
+  async deleteById(id: number) {
+    const prontuario = this.prontuarioRepository.findById(id)
+    if(!prontuario) {
+      throw new NotFoundException()
+    }
+    return await this.prontuarioRepository.deleteById(id)
   }
 }

@@ -4,11 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProntuarioModule } from './modules/prontuario/prontuario.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { jwtConstants } from './modules/auth/constants';
-import { JwtModule } from '@nestjs/jwt';
 import { UserModule } from './modules/user/user.module';
 import { AuthGuard } from './modules/auth/auth.guard';
 import { APP_GUARD } from '@nestjs/core';
+import { ClinicaModule } from './modules/clinica/clinica.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -24,6 +23,7 @@ import { APP_GUARD } from '@nestjs/core';
     ProntuarioModule,
     AuthModule,
     UserModule,
+    ClinicaModule
   ],
   controllers: [AppController],
   providers: [

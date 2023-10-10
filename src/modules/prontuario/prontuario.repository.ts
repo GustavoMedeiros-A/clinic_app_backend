@@ -10,6 +10,10 @@ export class ProntuarioRepository {
     private readonly prontuarioModel: Repository<Prontuario>,
   ) {}
 
+  async findById(id: number) {
+    return await this.prontuarioModel.findOneBy({ id });
+  }
+
   async findAll() {
     return await this.prontuarioModel.find();
   }
@@ -17,5 +21,9 @@ export class ProntuarioRepository {
   async createProntuario(prontuarioDto: ProntuarioDTO): Promise<Prontuario> {
     const prontuario = this.prontuarioModel.create(prontuarioDto);
     return await this.prontuarioModel.save(prontuario);
+  }
+
+  async deleteById(id: number) {
+    await this.prontuarioModel.delete({id})
   }
 }

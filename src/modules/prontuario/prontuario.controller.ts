@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, Delete, Param } from '@nestjs/common';
 import { ProntuarioService } from './prontuario.service';
 import { ProntuarioDTO } from './dtos/Prontuario.dto';
 
@@ -14,5 +14,10 @@ export class ProntuarioController {
   @Post()
   public createProntuario(@Body() prontuarioDto: ProntuarioDTO) {
     return this.prontuarioService.createProntuario(prontuarioDto);
+  }
+
+  @Delete(':id')
+  public deleteProntuario(@Param() id: number) {
+    return this.prontuarioService.deleteById(id)
   }
 }
