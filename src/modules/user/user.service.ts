@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserRepository } from './user.repository';
 import { CreateUserDTO } from './dtos/createUser.dto';
+import { hashPassword } from 'src/utils/password.hash';
 
 @Injectable()
 export class UserService {
@@ -19,6 +20,9 @@ export class UserService {
     if (userExists) {
       throw new HttpException('User already exists', HttpStatus.FORBIDDEN);
     }
-    return await this.usuarioRepository.createUser(user);
+    const hashedPassword = hashPassword(await user.password)
+
+    const newUser = await this.usuarioRepository.createUser({ ...user, password: hashedPassword });
+    return newUser;
   }
 }

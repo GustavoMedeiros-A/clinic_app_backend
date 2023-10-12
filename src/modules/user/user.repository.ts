@@ -18,7 +18,11 @@ export class UserRepository {
   }
 
   async createUser(usuario: CreateUserDTO) {
-    const newUser = this.usuarioModel.create(usuario);
+    const newUser = this.usuarioModel.create({
+      name: usuario.name,
+      email: usuario.email,
+      password: await usuario.password, // Resolve the password here
+    });
     return await this.usuarioModel.save(newUser);
   }
 }
