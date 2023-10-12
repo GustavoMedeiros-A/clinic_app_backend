@@ -1,9 +1,10 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { Prontuario } from 'src/model/entities/Prontuario';
 import { ProntuarioDTO } from './dtos/Prontuario.dto';
-import { Inject } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
+@Injectable()
 export class ProntuarioRepository {
   constructor(
     @InjectRepository(Prontuario)

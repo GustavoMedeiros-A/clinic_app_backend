@@ -9,6 +9,7 @@ export class ProntuarioService {
   async findAll() {
     return await this.prontuarioRepository.findAll();
   }
+  
 
   async createProntuario(prontuarioDto: ProntuarioDTO): Promise<ProntuarioDTO> {
     return await this.prontuarioRepository.createProntuario(prontuarioDto);

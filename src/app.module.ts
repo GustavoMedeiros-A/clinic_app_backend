@@ -10,6 +10,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { ClinicaModule } from './modules/clinica/clinica.module';
 import { EspecialistaModule } from './modules/especialista/especialista.module';
 import { EspecialistaClinicaModule } from './modules/especialistaClinica/especialista_clinica.module';
+import { DiaSemanaModule } from './modules/diaSemana/dia_semana.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -27,7 +28,8 @@ import { EspecialistaClinicaModule } from './modules/especialistaClinica/especia
     UserModule,
     ClinicaModule,
     EspecialistaModule,
-    EspecialistaClinicaModule
+    EspecialistaClinicaModule,
+    DiaSemanaModule
   ],
   controllers: [AppController],
   providers: [

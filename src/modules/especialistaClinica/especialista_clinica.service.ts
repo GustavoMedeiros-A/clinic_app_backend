@@ -1,7 +1,5 @@
-import { Inject, Injectable, NotFoundException, forwardRef } from '@nestjs/common';
-import { EspecialistaClinicaRepository } from './especialista_clinica.repository';
-import { EspecialistaClinicaInputDTO, EspecialistaClinicaOutputDTO } from './dtos/especialistaClinica.dto';
-import { EspecialistaService } from '../especialista/especialista.service';
+import {  Injectable } from '@nestjs/common';
+import { EspecialistaClinicaInputDTO } from './dtos/especialistaClinica.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeepPartial, Repository } from 'typeorm';
 import { Especialista } from 'src/model/entities/Especialista';
@@ -33,9 +31,6 @@ export class EspecialistaClinicaService {
     const especialistaClinica = this.especialistaClinicaRepository.create(partialEspecialistaClinica);
 
     await this.especialistaClinicaRepository.save(especialistaClinica);
-
-    // You can transform the result into the desired output DTO if needed
-
 
     return especialistaClinica;
 
