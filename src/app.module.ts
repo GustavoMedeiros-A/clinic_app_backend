@@ -11,6 +11,8 @@ import { ClinicaModule } from './modules/clinica/clinica.module';
 import { EspecialistaModule } from './modules/especialista/especialista.module';
 import { EspecialistaClinicaModule } from './modules/especialistaClinica/especialista_clinica.module';
 import { DiaSemanaModule } from './modules/diaSemana/dia_semana.module';
+import { ClinicaTipoModule } from './modules/clinica_tipo/clinica_tipo.module';
+import { HorarioModule } from './modules/horario/horario.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -29,7 +31,9 @@ import { DiaSemanaModule } from './modules/diaSemana/dia_semana.module';
     ClinicaModule,
     EspecialistaModule,
     EspecialistaClinicaModule,
-    DiaSemanaModule
+    DiaSemanaModule,
+    ClinicaTipoModule,
+    HorarioModule,
   ],
   controllers: [AppController],
   providers: [

@@ -1,7 +1,7 @@
-import {  Repository } from 'typeorm';
-import { Prontuario } from 'src/model/entities/Prontuario';
+import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Clinica } from 'src/model/entities/Clinica';
+import { ClinicaDTO } from './dtos/clinica.dto';
 
 export class ClinicaRepository {
   constructor(
@@ -23,6 +23,6 @@ export class ClinicaRepository {
   }
 
   async deleteById(id: number) {
-    await this.clinicaModel.delete({id})
+    await this.clinicaModel.delete({ id });
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { ClinicaRepository } from './clinica.repository';
+import { ClinicaDTO } from './dtos/clinica.dto';
 
 @Injectable()
 export class ClinicaService {
@@ -14,11 +15,11 @@ export class ClinicaService {
   }
 
   async deleteById(id: number) {
-    const clinica = this.clinicaRepository.findById(id)
-    if(!clinica) {
-      throw new NotFoundException()
+    const clinica = this.clinicaRepository.findById(id);
+    if (!clinica) {
+      throw new NotFoundException();
     }
-    await this.clinicaRepository.deleteById(id)
-    return `clinica ${(await clinica).nome} deleted`
+    await this.clinicaRepository.deleteById(id);
+    return `clinica ${(await clinica).nome} deleted`;
   }
 }

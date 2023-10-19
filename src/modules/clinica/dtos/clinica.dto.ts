@@ -1,4 +1,4 @@
-interface ClinicaDTO {
+export interface ClinicaDTO {
   id: number;
   nome: string;
   codigo: number;

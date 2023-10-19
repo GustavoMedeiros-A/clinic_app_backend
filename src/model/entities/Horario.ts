@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { EspecialistaClinica } from './EspecialistaClinica';
+import { DiaSemana } from './DiaSemana';
 
 @Entity({ name: 'horario' })
 export class Horario {
@@ -13,8 +14,8 @@ export class Horario {
   )
   especialistaClinica: EspecialistaClinica;
 
-  @Column({ type: 'int', unsigned: true })
-  id_dia_semana: number;
+  @ManyToOne(() => DiaSemana, (diaSemana) => diaSemana.id, { eager: true })
+  id_dia_semana: DiaSemana;
 
   @Column()
   hora_inicial: string;

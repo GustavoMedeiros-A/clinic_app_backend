@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get, Delete, Param } from '@nestjs/common';
 import { ClinicaService } from './clinica.service';
-
+import { ClinicaDTO } from './dtos/clinica.dto';
 
 @Controller('/api/clinica')
 export class ClinicaController {
@@ -18,6 +18,6 @@ export class ClinicaController {
 
   @Delete(':id')
   public deleteProntuario(@Param() id: number) {
-    return this.clinicaService.deleteById(id)
+    return this.clinicaService.deleteById(id);
   }
 }
