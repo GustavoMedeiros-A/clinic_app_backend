@@ -1,0 +1,1 @@
+{"version":3,"file":"DiaSemana.js","sourceRoot":"","sources":["../../../src/model/entities/DiaSemana.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,qCAAiE;AAG1D,IAAM,SAAS,GAAf,MAAM,SAAS;CAMrB,CAAA;AANY,8BAAS;AAEpB;IADC,IAAA,gCAAsB,GAAE;;qCACd;AAGX;IADC,IAAA,gBAAM,GAAE;;6CACU;oBALR,SAAS;IADrB,IAAA,gBAAM,EAAC,EAAE,IAAI,EAAE,YAAY,EAAE,CAAC;GAClB,SAAS,CAMrB"}
