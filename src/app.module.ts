@@ -13,15 +13,19 @@ import { EspecialistaClinicaModule } from './modules/especialistaClinica/especia
 import { DiaSemanaModule } from './modules/diaSemana/dia_semana.module';
 import { ClinicaTipoModule } from './modules/clinica_tipo/clinica_tipo.module';
 import { HorarioModule } from './modules/horario/horario.module';
+import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'user',
-      password: 'password',
-      database: 'clinic_app',
+      host: process.env.RAILWAY_MYSQL_HOST,
+      port: parseInt(process.env.RAILWAY_MYSQL_PORT),
+      username: process.env.RAILWAY_MYSQL_USER,
+      password: process.env.RAILWAY_MYSQL_PASSWORD,
+      database: process.env.RAILWAY_MYSQL_DATABASE,
       entities: [`${__dirname}/model/entities/**/*.{js,ts}`],
       synchronize: true,
     }),
